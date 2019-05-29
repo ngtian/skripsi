@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="329.0" prefWidth="485.0" style="-fx-background-color: whitrede;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <JFXTextField fx:id="username" focusColor="#4fdae1" labelFloat="true" layoutX="97.0" layoutY="160.0" prefHeight="25.0" prefWidth="325.0" promptText="Masukan username" />
+      <JFXPasswordField fx:id="password" focusColor="#4fdae1" labelFloat="true" layoutX="96.0" layoutY="226.0" prefHeight="25.0" prefWidth="325.0" promptText="Masukan password" />
+      <JFXButton fx:id="buttonLogin" layoutX="174.0" layoutY="290.0" onAction="#ActionLogin" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: cyan;" text="Login">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resource/icons8-enter-filled-50.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="buttonBatal" layoutX="269.0" layoutY="290.0" onAction="#ActionBatal" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: cyan;" text="Batal">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resource/icons8-unavailable-filled-50.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="63.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resource/icons8-user-male-26.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="63.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resource/icons8-lock-26.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="101.0" fitWidth="108.0" layoutX="192.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resource/icons8-customer-52.png" />
+         </image>
+      </ImageView>
+      <Text fill="#1fc7d7" layoutX="224.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

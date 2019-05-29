@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegistrasiController">
+   <children>
+      <VBox layoutY="-1.0" prefHeight="600.0" prefWidth="400.0" spacing="30.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="300.0" text="Registrasi Peserta Baru" textFill="#4fdae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="nama_pel" focusColor="#4fdae1" labelFloat="true" prefHeight="25.0" prefWidth="320.0" promptText="Masukan Nama Pelanggan">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="tempat_lahir" focusColor="#4fdae1" labelFloat="true" promptText="Masukan Tempat Lahir">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXDatePicker fx:id="tanggal_lahir" defaultColor="#4fdae1" prefHeight="28.0" prefWidth="320.0" promptText="Masukan Tanggal Lahir">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXDatePicker>
+            <JFXTextArea fx:id="alamat_pel" focusColor="#4fdae1" labelFloat="true" prefHeight="84.0" prefWidth="260.0" promptText="Masukan Alamat Lengkap Pelanggan">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextArea>
+            <JFXComboBox fx:id="jenis_kel" focusColor="#4fdae1" labelFloat="true" prefHeight="25.0" prefWidth="320.0" promptText="Masukan Jenis Kelamin">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </JFXComboBox>
+            <JFXTextField fx:id="no_tlf" focusColor="#4fdae1" labelFloat="true" promptText="Masukan Nomer Telf Pelanggan">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextField>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

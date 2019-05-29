@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PetugasController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="390.0" spacing="30.0">
+         <children>
+            <Label prefHeight="41.0" prefWidth="87.0" text="Petugas" textFill="#4fdae1">
+               <VBox.margin>
+                  <Insets left="-300.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="nama_petugas" focusColor="#4fdae1" labelFloat="true" promptText="Masukan Nama Petugas" />
+            <JFXTextField fx:id="nohp_petugas" focusColor="#4fdae1" labelFloat="true" layoutX="30.0" layoutY="71.0" promptText="Masukan No HP Petugas" />
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+               <buttons>
+                  <JFXButton fx:id="simpanbutton" onAction="#simpanHandle" style="-fx-background-color: cyan;" text="Simpan">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resource/icons8-save-as-filled-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="ubahbutton" disable="true" layoutX="134.0" layoutY="18.0" onAction="#ubahHandle" style="-fx-background-color: cyan;" text="Ubah">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resource/icons8-update-filled-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="hapusbutton" disable="true" layoutX="134.0" layoutY="18.0" onAction="#hapusHandle" style="-fx-background-color: cyan;" text="Hapus">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resource/icons8-delete-filled-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="batalbutton" disable="true" layoutX="115.0" layoutY="18.0" onAction="#batalHandle" style="-fx-background-color: cyan;" text="Batal">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Resource/icons8-unavailable-filled-50.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></JFXButton>
+               </buttons>
+            </ButtonBar>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </VBox>
+      <JFXTreeTableView fx:id="tabelpetugas" layoutX="390.0" onMousePressed="#mousePressedHandle" prefHeight="600.0" prefWidth="411.0" />
+   </children>
+</AnchorPane>

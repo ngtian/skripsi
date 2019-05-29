@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KembaliLanjutController">
+   <children>
+      <ButtonBar layoutY="353.0" prefHeight="50.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <buttons>
+            <JFXButton fx:id="kembaliButton" onAction="#kembaliHandle" style="-fx-background-color: cyan;" text="Kembali" />
+            <JFXButton fx:id="lanjutButton" onAction="#lanjutHandle" style="-fx-background-color: cyan;" text="Lanjut" />
+         </buttons>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </ButtonBar>
+      <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

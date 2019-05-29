@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BayarController">
+   <children>
+      <VBox layoutX="-1.0" prefHeight="606.0" prefWidth="431.0" spacing="30.0">
+         <children>
+            <Label text="Pembayaran" textFill="#4fdae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="21.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="harga_paket" editable="false" focusColor="#4fdae1" labelFloat="true" promptText="Harga Paket">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="uang_dibayar" focusColor="#4fdae1" labelFloat="true" promptText="Jumlah Uang Yang Dibayarkan">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="kembalian" editable="false" focusColor="#4fdae1" labelFloat="true" promptText="Kembalian">
+               <VBox.margin>
+                  <Insets left="50.0" right="90.0" />
+               </VBox.margin>
+            </JFXTextField>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
