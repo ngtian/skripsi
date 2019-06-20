@@ -7,6 +7,8 @@ package model;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -34,23 +36,21 @@ public class jadwal extends RecursiveTreeObject<jadwal>{
     }
     
     public static ObservableList<jadwal> getJadwal(){
-//        refreshDB();
         return jadwalList;
     }
     
-//    private static void refreshDB() {
-//        try(Connection connection = DB.koneksi.sql2o.open()) {
-//            final String query = "SELECT * FROM jadwal";
-//            jadwalList.setAll(connection.createQuery(query).executeAndFetch(jadwal.class));
-//        }
-//    }
+    public static List<jadwal> getJadwalFromDb() {
+        try(Connection connection = DB.koneksi.sql2o.open()) {
+            final String query = "SELECT * FROM jadwal";
+            return connection.createQuery(query).executeAndFetch(jadwal.class);
+        }
+    }
     
     public boolean createJadwal(){
         try (Connection connection = DB.koneksi.sql2o.open()) {
             final String query = "INSERT INTO jadwal (id_pelanggan,id_paket,tanggal_pertemuan) VALUE (:id_pelanggan, :id_paket, :tanggal_pertemuan)";
             connection.createQuery(query).bind(this).executeUpdate();
             if(connection.getResult()>0){
-      //          refreshDB();
                 return true;
             }
             return false;
@@ -62,13 +62,21 @@ public class jadwal extends RecursiveTreeObject<jadwal>{
             final String query = "UPDATE jadwal SET `id_pelanggan` = :id_pelanggan, `id_paket` = :id_paket, `tanggal_pertemuan` = :tanggal_pertemuan WHERE `id_jadwal` = :id_jadwal";
             connection.createQuery(query).bind(this).executeUpdate();
             if(connection.getResult()>0){
-        //        refreshDB();
                 return true;
             }
             return false;
         }
     }
 
+        public static List <jadwal> jadwal (LocalDate dari, LocalDate sampai){
+        return getJadwalFromDb()
+                .stream()
+                .filter((t) -> {
+                    LocalDate localDate = new LocalDate(registrasi.getReg(t).getTanggal_daftar());
+                    return localDate.isAfter(dari) && localDate.isBefore(sampai) || localDate.equals(sampai);
+                }).collect(Collectors.toList());
+        }
+    
     public int getId_jadwal() {
         return id_jadwal;
     }

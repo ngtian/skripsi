@@ -19,7 +19,6 @@ import model.jadwal;
 import static model.jadwal.getJadwal;
 import model.paket;
 import model.registrasi;
-import model.rupiah;
 
 /**
  * FXML Controller class
