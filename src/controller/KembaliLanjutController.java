@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +19,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import model.bayar;
+import model.laporan;
 
 /**
  * FXML Controller class
@@ -59,13 +59,13 @@ public class KembaliLanjutController implements Initializable {
     }
 
     @FXML
-    void lanjutHandle(ActionEvent event) {
+    void lanjutHandle(ActionEvent event) throws IOException {
         if (scrollPane.getContent() == registrasi) {
             if (RC.simpanRegistrasi()) {
                 scrollPane.setContent(jadwal);
             }
         } else if (scrollPane.getContent() == jadwal) {
-            if (BC.setHargaPaket() && (model.jadwal.getJadwal().size() == model.paket.pkt.getJumlah())) {
+            if (BC.setHargaPaket() && model.jadwal.getJadwal().size() == model.paket.pkt.getJumlah()) {
                 scrollPane.setContent(bayar);
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -74,17 +74,22 @@ public class KembaliLanjutController implements Initializable {
                 alert.setContentText("Paket Belum diPilih atau Tanggal dan Waktu Belum Selesai Memilih");
                 alert.show();
             }
+            lanjutButton.setText("Konfirmasi");
         } else if (scrollPane.getContent() == bayar) {
             KC.setRegistrasi();
-            lanjutButton.setText("Konfirmasi");
+            lanjutButton.setText("Simpan");
             scrollPane.setContent(konfirmasi);
         } else if ((scrollPane.getContent() == konfirmasi)){
+            scrollPane.setContent(konfirmasi);
             model.registrasi.reg.createPelanggan();
             model.jadwal.getJadwal().forEach((t) -> {
+                t.setId_pelanggan(model.registrasi.reg.getId_pelanggan());
                 t.createJadwal();
             });
             model.bayar.byr = new bayar(model.registrasi.reg.getId_pelanggan(),model.paket.pkt.getId_paket());
+            model.bayar.byr.setId_pelanggan(model.registrasi.reg.getId_pelanggan());
             model.bayar.byr.createBayar();
+            laporan.struk();
         } 
     }
     /**

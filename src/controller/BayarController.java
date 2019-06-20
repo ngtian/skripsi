@@ -11,7 +11,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import model.paket;
-import model.rupiah;
 
 /**
  * FXML Controller class
@@ -31,7 +30,7 @@ public class BayarController implements Initializable {
     
     boolean setHargaPaket(){
         if (paket.pkt != null) {
-            harga_paket.setText(rupiah.rupiah(paket.pkt.getHarga_paket()));
+            harga_paket.setText(String.valueOf(paket.pkt.getHarga_paket()));
             return true;
         }
         return false;

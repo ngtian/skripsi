@@ -6,6 +6,8 @@
 package model;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import java.util.List;
+import java.util.stream.Collectors;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -80,6 +82,22 @@ public class paket extends RecursiveTreeObject<paket>{
             }
             return false;
         }
+    }
+    
+    public static paket getPaket(jadwal jdw) {
+        return getPaket()
+                .stream()
+                .filter(paket -> paket.id_paket==jdw.getId_paket())
+                .findFirst()
+                .orElse(null);
+    }
+    
+    public static paket getPaket(bayar byr) {
+        return getPaket()
+                .stream()
+                .filter(paket -> paket.id_paket==byr.getId_paket())
+                .findFirst()
+                .orElse(null);
     }
     
     public ObjectProperty<Integer> id_paketProperty() {

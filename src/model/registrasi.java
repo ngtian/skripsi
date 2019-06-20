@@ -5,9 +5,14 @@
  */
 package model;
 
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.sql2o.Connection;
 
 /**
@@ -54,6 +59,7 @@ public class registrasi {
         try (Connection connection = DB.koneksi.sql2o.open()) {
             final String query = "INSERT INTO pelanggan (tanggal_daftar,nama_pelanggan,tempat_lahir,tanggal_lahir,alamat,jenis_kelamin,no_hp) VALUE (:tanggal_daftar, :nama_pelanggan, :tempat_lahir, :tanggal_lahir, :alamat, :jenis_kelamin, :no_hp)";
             connection.createQuery(query).bind(this).executeUpdate();
+            id_pelanggan = connection.getKey(Integer.class);
             if(connection.getResult()>0){
                 refreshDB();
                 return true;
@@ -73,7 +79,32 @@ public class registrasi {
             return false;
         }
     }
+
+    public static registrasi getReg(jadwal jdw) {
+        return getPelanggan()
+                .stream()
+                .filter(registrasi -> registrasi.id_pelanggan==jdw.getId_pelanggan())
+                .findFirst()
+                .orElse(null);
+    }
     
+    public static registrasi getReg(bayar byr) {
+        return getPelanggan()
+                .stream()
+                .filter(registrasi -> registrasi.id_pelanggan==byr.getId_pelanggan())
+                .findFirst()
+                .orElse(null);
+    }
+    
+     public static List <registrasi> registrasi (LocalDate dari, LocalDate sampai){
+        return getPelanggan()
+                .stream()
+                .filter((t) -> {
+                    LocalDate localDate = new LocalDate(t.getTanggal_daftar());
+                    return localDate.isAfter(dari) && localDate.isBefore(sampai) || localDate.equals(sampai);
+                }).collect(Collectors.toList());
+        }
+     
     public int getId_pelanggan() {
         return id_pelanggan;
     }
@@ -142,5 +173,4 @@ public class registrasi {
     public String toString() {
         return "registrasi{" + "id_pelanggan=" + id_pelanggan + ", tanggal_daftar=" + tanggal_daftar + ", nama_pelanggan=" + nama_pelanggan + ", tempat_lahir=" + tempat_lahir + ", tanggal_lahir=" + tanggal_lahir + ", alamat=" + alamat + ", jenis_kelamin=" + jenis_kelamin + ", no_hp=" + no_hp + '}';
     }
-    
 }

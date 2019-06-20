@@ -126,7 +126,7 @@ public class PaketController implements Initializable {
         nama_paket.setText(pkt.getNama_paket());
         int index = jumlahList.indexOf(pkt.getJumlah());
         jumlah.getSelectionModel().clearAndSelect(index);
-        harga_paket.setText(rupiah.rupiah(pkt.getHarga_paket()));
+        harga_paket.setText(String.valueOf(pkt.getHarga_paket()));
         resetButton();
     }
     

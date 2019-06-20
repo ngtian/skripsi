@@ -5,8 +5,11 @@
  */
 package model;
 
+import java.util.List;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.joda.time.LocalDate;
 import org.sql2o.Connection;
 
 /**
@@ -61,6 +64,15 @@ public class bayar {
             return false;
         }
     }
+
+public static List <bayar> bayar (LocalDate dari, LocalDate sampai){
+        return getBayar()
+                .stream()
+                .filter((t) -> {
+                    LocalDate localDate = new LocalDate(registrasi.getReg(t).getTanggal_daftar());
+                    return localDate.isAfter(dari) && localDate.isBefore(sampai) || localDate.equals(sampai);
+                }).collect(Collectors.toList());
+        }
     
     public int getId_pembayaran() {
         return id_pembayaran;
