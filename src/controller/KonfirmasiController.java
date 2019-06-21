@@ -70,6 +70,8 @@ public class KonfirmasiController implements Initializable {
     }
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -91,4 +93,15 @@ public class KonfirmasiController implements Initializable {
        tabel_Jadwal.setShowRoot(false);
        
     }        
+
+    void reset() {
+        Alamat.setText("");
+        Harga_Paket.setText("");
+        Jenis_Kelamin.setText("");
+        Nama_Paket.setText("");
+        No_Hp.setText("");
+        Tanggal_Lahir.setText("");
+        jumlah_pertemuan.setText("");
+        nama_pelanggan.setText("");
+    }
 }

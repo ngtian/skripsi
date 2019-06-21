@@ -90,6 +90,14 @@ public class KembaliLanjutController implements Initializable {
             model.bayar.byr.setId_pelanggan(model.registrasi.reg.getId_pelanggan());
             model.bayar.byr.createBayar();
             laporan.struk();
+            
+            // Reset
+            scrollPane.setContent(registrasi);
+            KC.reset();
+            BC.reset();
+            JC.reset();
+            RC.reset();
+            lanjutButton.setText("Lanjut");
         } 
     }
     /**

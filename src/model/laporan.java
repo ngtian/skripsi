@@ -83,28 +83,28 @@ public class laporan {
         );
     }
     
-//    private static Table kop_surat(String judul) throws MalformedURLException, IOException {
-//        BufferedImage img = ImageIO.read(
-//                laporan.class.getResourceAsStream("/Resource/icons8-garage-26.PNG"));
-//        byte[] imageInByte;
-//        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-//            ImageIO.write(img, "png", baos);
-//            baos.flush();
-//            imageInByte = baos.toByteArray();
-//        }
-//        Image image = new Image(ImageDataFactory.create(imageInByte));
-//
-//        return new Table(new UnitValue[]{
-//                new UnitValue(UnitValue.PERCENT, 10),
-//                new UnitValue(UnitValue.PERCENT, 90)}, true)
-//                .setFontSize(12)
-//                .addCell(cellNoBorder(image.setAutoScale(true)))
-//                .addCell(
-//                        cellNoBorder("SEKOLAH MENGEMUDI TALENTA JAYA\n Jalan Raya CiNERE (Samping Informa) Cinere Depok \n Telepon : 081318002095\n \n \n" +judul+ "\n \n")
-//                                .setTextAlignment(TextAlignment.CENTER)
-//                                .setHorizontalAlignment(HorizontalAlignment.CENTER)
-//                                .setVerticalAlignment(VerticalAlignment.MIDDLE));               
-//    }
+    private static Table kop_surat(String judul) throws MalformedURLException, IOException {
+        BufferedImage img = ImageIO.read(
+                laporan.class.getResourceAsStream("/Resource/icons8-garage-26.png"));
+        byte[] imageInByte;
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            ImageIO.write(img, "png", baos);
+            baos.flush();
+            imageInByte = baos.toByteArray();
+        }
+        Image image = new Image(ImageDataFactory.create(imageInByte));
+
+        return new Table(new UnitValue[]{
+                new UnitValue(UnitValue.PERCENT, 10),
+                new UnitValue(UnitValue.PERCENT, 90)}, true)
+                .setFontSize(12)
+                .addCell(cellNoBorder(image.setAutoScale(true)))
+                .addCell(
+                        cellNoBorder("SEKOLAH MENGEMUDI TALENTA JAYA\n Jalan Raya CiNERE (Samping Informa) Cinere Depok \n Telepon : 081318002095\n \n \n" +judul+ "\n \n")
+                                .setTextAlignment(TextAlignment.CENTER)
+                                .setHorizontalAlignment(HorizontalAlignment.CENTER)
+                                .setVerticalAlignment(VerticalAlignment.MIDDLE));               
+    }
 
     private static Table signature(LocalDate tgl) {
         return new Table(
@@ -134,7 +134,7 @@ public class laporan {
         PdfWriter writer = new PdfWriter(fileName);
         PdfDocument pdf = new PdfDocument(writer);
         try (Document document = new Document(pdf)) {
-//            document.add(kop_surat("Laporan Data Pelanggan"));
+            document.add(kop_surat("Laporan Data Pelanggan"));
             
             Table detailTable = new Table(new UnitValue[]{
                 new UnitValue(UnitValue.PERCENT, 50),
@@ -176,7 +176,7 @@ public class laporan {
         PdfWriter writer = new PdfWriter(fileName);
         PdfDocument pdf = new PdfDocument(writer);
         try (Document document = new Document(pdf)) {
-//            document.add(kop_surat("Laporan Data Mobil"));
+            document.add(kop_surat("Laporan Data Mobil"));
             
             Table detailTable = new Table(new UnitValue[]{
                 new UnitValue(UnitValue.PERCENT, 50),
@@ -212,7 +212,7 @@ public class laporan {
         PdfWriter writer = new PdfWriter(fileName);
         PdfDocument pdf = new PdfDocument(writer);
         try (Document document = new Document(pdf)) {
-//            document.add(kop_surat("Laporan Data Jadwal"));
+            document.add(kop_surat("Laporan Data Jadwal"));
             
             Table detailTable = new Table(new UnitValue[]{
                 new UnitValue(UnitValue.PERCENT, 50),
@@ -250,7 +250,7 @@ public class laporan {
         PdfWriter writer = new PdfWriter(fileName);
         PdfDocument pdf = new PdfDocument(writer);
         try (Document document = new Document(pdf)) {
-//            document.add(kop_surat("Laporan Data Bayar"));
+            document.add(kop_surat("Laporan Data Bayar"));
             
             Table detailTable = new Table(new UnitValue[]{
                 new UnitValue(UnitValue.PERCENT, 50),
@@ -306,28 +306,28 @@ public class laporan {
             Table itemsTable = new Table(new UnitValue[]{
                 new UnitValue(UnitValue.PERCENT, 25),
                 new UnitValue(UnitValue.PERCENT, 10),
-                new UnitValue(UnitValue.PERCENT, 30),}, true);
+                new UnitValue(UnitValue.PERCENT, 30),}, false);
             
             itemsTable.setFontSize(6);
             itemsTable.setTextAlignment(TextAlignment.LEFT);
-            itemsTable.addCell(cell("Id Pembayaran").setFontSize(6));
-            itemsTable.addCell(cell(":").setFontSize(6));
-            itemsTable.addCell(cell(String.valueOf(bayar.byr.getId_pembayaran())).setFontSize(6));
-            itemsTable.addCell(cell("Id Pelanggan").setFontSize(6));
-            itemsTable.addCell(cell(":").setFontSize(6));
-            itemsTable.addCell(cell(String.valueOf(bayar.byr.getId_pelanggan())).setFontSize(6));
-            itemsTable.addCell(cell("Nama Pelanggan").setFontSize(6));
-            itemsTable.addCell(cell(":").setFontSize(6));
-            itemsTable.addCell(cell(registrasi.reg.getNama_pelanggan()).setFontSize(6));
-            itemsTable.addCell(cell("Id Paket").setFontSize(6));
-            itemsTable.addCell(cell(":").setFontSize(6));
-            itemsTable.addCell(cell(String.valueOf(bayar.byr.getId_paket())).setFontSize(6));
-            itemsTable.addCell(cell("Nama Paket").setFontSize(6));
-            itemsTable.addCell(cell(":").setFontSize(6));
-            itemsTable.addCell(cell(paket.pkt.getNama_paket()).setFontSize(6));
-            itemsTable.addCell(cell("Harga Paket").setFontSize(6));
-            itemsTable.addCell(cell(":").setFontSize(6));
-            itemsTable.addCell(cell(String.valueOf(paket.pkt.getHarga_paket())).setFontSize(6));
+            itemsTable.addCell(cellNoBorder("Id Pembayaran").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(":").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(String.valueOf(bayar.byr.getId_pembayaran())).setFontSize(6));
+            itemsTable.addCell(cellNoBorder("Id Pelanggan").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(":").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(String.valueOf(bayar.byr.getId_pelanggan())).setFontSize(6));
+            itemsTable.addCell(cellNoBorder("Nama Pelanggan").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(":").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(registrasi.reg.getNama_pelanggan()).setFontSize(6));
+            itemsTable.addCell(cellNoBorder("Id Paket").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(":").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(String.valueOf(bayar.byr.getId_paket())).setFontSize(6));
+            itemsTable.addCell(cellNoBorder("Nama Paket").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(":").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(paket.pkt.getNama_paket()).setFontSize(6));
+            itemsTable.addCell(cellNoBorder("Harga Paket").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(":").setFontSize(6));
+            itemsTable.addCell(cellNoBorder(String.valueOf(paket.pkt.getHarga_paket())).setFontSize(6));
             document.add(itemsTable);
             
             document.add(
