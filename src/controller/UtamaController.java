@@ -62,8 +62,6 @@ public class UtamaController implements Initializable {
     @FXML
     private JFXButton logoutButton;
 
-   
-    
     AnchorPane tampilan1;
     AnchorPane tampilan2;
     AnchorPane tampilan3;
@@ -89,9 +87,6 @@ public class UtamaController implements Initializable {
             stage.setScene(new Scene(parent));
         }
     }
-
-    
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

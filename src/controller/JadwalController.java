@@ -68,8 +68,10 @@ public class JadwalController implements Initializable {
     @FXML
     void pilhpaketHandle(ActionEvent event) {
         paket.pkt = id_paket.getValue();
-        nama_paket.setText(paket.pkt.getNama_paket());
-        jumlah.setText(String.valueOf(paket.pkt.getJumlah()));
+        if (paket.pkt != null) {
+            nama_paket.setText(paket.pkt.getNama_paket());
+            jumlah.setText(String.valueOf(paket.pkt.getJumlah()));
+        }
     }
 
     private boolean validasi(){
@@ -80,18 +82,19 @@ public class JadwalController implements Initializable {
     void tambahJadwal(ActionEvent event) {
         if(validasi()){
             if(jadwal.getJadwal().size()< paket.pkt.getJumlah()){
-            LocalDate localdate = tgl_per.getValue();
-            LocalDateTime datelocation = localdate.atTime(waktu.getValue());
-            ZonedDateTime sdt = datelocation.atZone(ZoneId.systemDefault());
-            Date output = Date.from(sdt.toInstant());
-            jadwal.getJadwal().add(new jadwal(
-                registrasi.reg.getId_pelanggan(),
-                paket.pkt.getId_paket(),
-                output
-        ));
-        tgl_per.setValue(null);
-        waktu.setValue(null);
-        }
+                LocalDate localdate = tgl_per.getValue();
+                LocalDateTime datelocation = localdate.atTime(waktu.getValue());
+                ZonedDateTime sdt = datelocation.atZone(ZoneId.systemDefault());
+                Date output = Date.from(sdt.toInstant());
+                jadwal.getJadwal().add(new jadwal(
+                    registrasi.reg.getId_pelanggan(),
+                    paket.pkt.getId_paket(),
+                    output
+                ));
+                tgl_per.setValue(null);
+                waktu.setValue(null);
+                tgl_per.requestFocus();
+            }
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -117,6 +120,8 @@ public class JadwalController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -139,5 +144,14 @@ public class JadwalController implements Initializable {
        
        id_paket.setItems(paket.getPaket());
     }    
+
+    void reset() {
+        id_paket.getSelectionModel().clearSelection();
+        jumlah.setText("");
+        nama_paket.setText("");
+        tgl_per.setValue(null);
+        waktu.setValue(null);
+        getJadwal().clear();
+    }
     
 }

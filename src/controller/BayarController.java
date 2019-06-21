@@ -37,6 +37,8 @@ public class BayarController implements Initializable {
     }
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,5 +49,11 @@ public class BayarController implements Initializable {
             }
         });
     }    
+
+    void reset() {
+        harga_paket.setText("");
+        uang_dibayar.setText("");
+        kembalian.setText("");
+    }
     
 }

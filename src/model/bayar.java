@@ -21,7 +21,7 @@ public class bayar {
     int id_pelanggan;
     int id_paket;
 
-    private static ObservableList<bayar> bayarList = FXCollections.observableArrayList();
+    private static final ObservableList<bayar> bayarList = FXCollections.observableArrayList();
     public static bayar byr;
     
     public bayar(int id_pelanggan, int id_paket) {
@@ -46,6 +46,7 @@ public class bayar {
             final String query = "INSERT INTO pembayaran (id_pelanggan,id_paket) VALUE (:id_pelanggan, :id_paket)";
             connection.createQuery(query).bind(this).executeUpdate();
             if(connection.getResult()>0){
+                this.id_pembayaran = connection.getKey(Integer.class);
                 refreshDB();
                 return true;
             }

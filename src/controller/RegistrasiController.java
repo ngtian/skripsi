@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -84,6 +83,16 @@ public class RegistrasiController implements Initializable {
             alert.show();
             return false;
         }
+    }
+
+    void reset() {
+        nama_pel.setText("");
+        tempat_lahir.setText("");
+        tanggal_lahir.setValue(null);
+        alamat_pel.setText("");
+        jenis_kel.getSelectionModel().clearSelection();
+        no_tlf.setText("");
+        registrasi.reg = null;
     }
     
 }

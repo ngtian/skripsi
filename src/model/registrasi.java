@@ -5,14 +5,12 @@
  */
 package model;
 
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
 import org.sql2o.Connection;
 
 /**
